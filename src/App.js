@@ -5,8 +5,8 @@ import { useAuthContext } from './hooks/useAuthContext';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Dashboard from './pages/StatisticsPage'; // Renamed to DashboardPage
 import Sidebar from './components/Sidebar';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
   const { user } = useAuthContext();
@@ -18,22 +18,10 @@ function App() {
       {showSidebar && <Sidebar />}
       <div className={showSidebar ? "content-with-sidebar" : "content"}>
         <Routes>
-          <Route
-            path="/"
-            element={user ? <Home /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/dashboard"
-            element={user ? <Dashboard /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/login"
-            element={!user ? <Login /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/signup"
-            element={!user ? <Signup /> : <Navigate to="/" />}
-          />
+          <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
+          <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+          <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+          <Route path="/dashboard" element={user ? <DashboardPage /> : <Navigate to="/login" />} />
         </Routes>
       </div>
     </div>
