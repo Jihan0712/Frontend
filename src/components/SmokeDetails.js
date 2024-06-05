@@ -8,6 +8,7 @@ const SmokeDetails = ({ smoke }) => {
   
   const [isEditing, setIsEditing] = useState(false)
   const [opacity, setOpacity] = useState(smoke.opacity)
+  const [email, setEmail] = useState(smoke.userEmail)
   const [smokeResult, setSmokeResult] = useState(smoke.smoke_result)
 
   const handleDeleteClick = async () => {
@@ -20,7 +21,7 @@ const SmokeDetails = ({ smoke }) => {
     }
 
     try {
-      const response = await fetch('https://backend-ieyu.onrender.comhttps://backend-ieyu.onrender.com/api/smokes/' + smoke._id, {
+      const response = await fetch('backend-ieyu.onrender.com/api/smokes/' + smoke._id, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${user.token}`
@@ -59,7 +60,7 @@ const SmokeDetails = ({ smoke }) => {
     }
 
     try {
-      const response = await fetch('https://backend-ieyu.onrender.comhttps://backend-ieyu.onrender.com/api/smokes/' + smoke._id, {
+      const response = await fetch('https://backend-ieyu.onrender.com/api/smokes/' + smoke._id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -104,7 +105,7 @@ const SmokeDetails = ({ smoke }) => {
 
   return (
     <div className="smoke-details">
-      <h4>{smoke.email}</h4>
+      <h4>{email}</h4>
       <p><strong>Opacity: </strong>{opacity}</p> {/* Updated to use state */}
       <p><strong>Result: </strong>{smokeResult}</p> {/* Updated to use state */}
       <p>{smoke.createdAt}</p>
