@@ -14,23 +14,30 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="sidebar-container">
-        <Link to="/">
-          <h1>Thesis</h1>
-        </Link>
-        <nav>
-          {user ? (
-            <div>
-              <span>{user.email}</span>
-              <Link to="/statistics">Statistics</Link>
-              <button onClick={handleClick} className="logout-button">Log out</button>
-            </div>
-          ) : (
-            <div>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
-            </div>
+        <div className="sidebar-header">
+          <Link to="/">
+            <h1>Thesis</h1>
+          </Link>
+        </div>
+        <div className="sidebar-user">
+          {user && (
+            <span>{user.email}</span>
           )}
+        </div>
+        <nav>
+          <ul className="sidebar-menu">
+            <li><Link to="/">Dashboard</Link></li>
+            <li><Link to="/user-info">User Information</Link></li>
+            <li><Link to="/print-result">Print Result</Link></li>
+            <li><Link to="/customer-view">Customer View</Link></li>
+            <li><Link to="/statistics">Statistics</Link></li>
+          </ul>
         </nav>
+        {user && (
+          <div className="sidebar-footer">
+            <button onClick={handleClick} className="logout-button">Log out</button>
+          </div>
+        )}
       </div>
     </aside>
   )
