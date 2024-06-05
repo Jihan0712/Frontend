@@ -8,7 +8,6 @@ const SmokeDetails = ({ smoke }) => {
   
   const [isEditing, setIsEditing] = useState(false)
   const [opacity, setOpacity] = useState(smoke.opacity)
-  const [email, setEmail] = useState(smoke.userEmail)
   const [smokeResult, setSmokeResult] = useState(smoke.smoke_result)
 
   const handleDeleteClick = async () => {
@@ -105,7 +104,7 @@ const SmokeDetails = ({ smoke }) => {
 
   return (
     <div className="smoke-details">
-      <h4>{email}</h4>
+      <h4>{smoke.userEmail}</h4>
       <p><strong>Opacity: </strong>{opacity}</p> {/* Updated to use state */}
       <p><strong>Result: </strong>{smokeResult}</p> {/* Updated to use state */}
       <p>{smoke.createdAt}</p>
