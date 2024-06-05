@@ -1,12 +1,3 @@
-body, html, #root, .App {
-  background: #2b2b2b; /* Match the background of the dashboard */
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-
 .dashboard-page {
   padding: 20px;
   background-color: #2b2b2b;
@@ -21,30 +12,30 @@ body, html, #root, .App {
 .statistics-cards {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Reduced margin */
   width: 100%;
   flex-wrap: wrap;
 }
 
 .card {
   background-color: #333;
-  padding: 20px;
+  padding: 10px; /* Reduced padding */
   border-radius: 8px;
   text-align: center;
   flex: 1;
-  margin: 10px;
+  margin: 5px; /* Reduced margin */
   min-width: 150px;
   max-width: 200px;
   box-sizing: border-box;
 }
 
 .card h2 {
-  margin-bottom: 10px;
+  margin-bottom: 5px; /* Reduced margin */
   color: #ffffff;
 }
 
 .card p {
-  font-size: 24px;
+  font-size: 20px; /* Reduced font size */
   font-weight: bold;
 }
 
@@ -53,12 +44,12 @@ body, html, #root, .App {
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
-  gap: 20px;
+  gap: 10px; /* Reduced gap */
 }
 
 .chart {
   background-color: #333;
-  padding: 20px;
+  padding: 10px; /* Reduced padding */
   border-radius: 8px;
   flex: 1;
   min-width: 300px;
@@ -74,13 +65,13 @@ body, html, #root, .App {
 .chart-wrapper {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: 10px; /* Reduced gap */
   width: 100%;
 }
 
 h3 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Reduced margin */
 }
 
 .sidebar {
@@ -101,13 +92,13 @@ h3 {
 .sidebar h1 {
   color: #ffffff;
   font-size: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Reduced margin */
 }
 
 .sidebar nav a {
   color: #b0b0b0;
   text-decoration: none;
-  margin-bottom: 10px;
+  margin-bottom: 5px; /* Reduced margin */
   display: block;
 }
 
@@ -125,14 +116,14 @@ h3 {
 
 .content {
   margin-left: 270px;
-  padding: 20px;
+  padding: 10px; /* Reduced padding */
   width: calc(100% - 270px); /* Adjusted width to remove padding */
   box-sizing: border-box;
 }
 
 .content-with-sidebar {
   margin-left: 270px;
-  padding: 20px;
+  padding: 10px; /* Reduced padding */
   width: calc(100% - 270px); /* Adjusted width to remove padding */
   box-sizing: border-box;
 }
