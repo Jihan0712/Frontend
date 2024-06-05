@@ -5,48 +5,12 @@
   padding: 20px;
   background-color: #1e1e1e;
   color: #ffffff;
-  height: 100vh; /* Full height of the viewport */
-  overflow: hidden; /* Prevent scrolling */
 }
 
 .smokes {
   width: 100%;
   max-width: 800px;
   margin-bottom: 20px;
-  overflow-y: auto; /* Scroll only within this container */
-  flex-grow: 1; /* Allow it to grow to take available space */
-}
-
-.smoke-details {
-  background: #fff;
-  border-radius: 4px;
-  margin: 10px 0;
-  padding: 20px;
-  position: relative;
-  color: #333;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.smoke-details h4 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
-  color: var(--primary);
-}
-
-.smoke-details p {
-  margin: 0;
-  font-size: 0.9em;
-  color: #555;
-}
-
-.smoke-details .delete-button,
-.smoke-details .update-button {
-  margin-right: 10px; /* Add some space to the right of the buttons */
-  cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
-  color: #333;
 }
 
 .pagination {
