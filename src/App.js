@@ -6,7 +6,6 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Sidebar from './components/Sidebar'
-import DashboardPage from './pages/DashboardPage' // Import the renamed DashboardPage
 
 function App() {
   const { user } = useAuthContext()
@@ -29,10 +28,6 @@ function App() {
           <Route 
             path="/signup" 
             element={!user ? <Signup /> : <Navigate to="/" />} 
-          />
-          <Route 
-            path="/dashboard" // Add the route for DashboardPage
-            element={user ? <DashboardPage /> : <Navigate to="/login" />} 
           />
         </Routes>
       </div>
