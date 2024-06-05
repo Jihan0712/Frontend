@@ -6,11 +6,12 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Sidebar from './components/Sidebar'
+import StatisticsPage from './pages/StatisticsPage'
 
 function App() {
   const { user } = useAuthContext()
   const location = useLocation()
-  const showSidebar = location.pathname !== '/login' && location.pathname !== '/signup'
+  const showSidebar = !['/login', '/signup'].includes(location.pathname)
 
   return (
     <div className="App">
@@ -28,6 +29,10 @@ function App() {
           <Route 
             path="/signup" 
             element={!user ? <Signup /> : <Navigate to="/" />} 
+          />
+          <Route 
+            path="/statistics" 
+            element={user ? <StatisticsPage /> : <Navigate to="/login" />} 
           />
         </Routes>
       </div>
