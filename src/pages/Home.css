@@ -1,46 +1,48 @@
 .home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #1e1e1e;
-    color: #ffffff;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  height: 100%;
+  overflow: auto;
+}
+
+.smokes {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination button.active {
+  background-color: #17a2b8;
+}
+
+.pagination button:hover {
+  background-color: #0f6674;
+}
+
+@media (max-width: 768px) {
   .smokes {
     width: 100%;
-    max-width: 800px;
-    margin-bottom: 20px;
+    padding: 0 10px;
   }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .pagination button {
-    background-color: #2a2a2a;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    margin: 0 5px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .pagination button.active {
-    background-color: #17a2b8;
-  }
-  
-  .pagination button:hover {
-    background-color: #0f6674;
-  }
-  
-  @media (max-width: 768px) {
-    .smokes {
-      width: 100%;
-      padding: 0 10px;
-    }
-  }
-  
+}
+git 

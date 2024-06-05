@@ -56,43 +56,34 @@ header a {
 .App {
   display: flex;
   height: 100%; /* Ensure it takes full height */
-  width: 100%;
 }
 
 .content-with-sidebar {
   margin-left: 250px; /* Adjust this value to create space between the sidebar and content */
   padding: 20px;
-  width: calc(100% - 250px);
-  box-sizing: border-box;
-  height: 100%; /* Ensure it takes full height */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; /* Ensure no overflow */
+  height: 100%;
+  overflow: auto;
 }
 
 .content {
   padding: 20px;
-  height: 100%; /* Ensure it takes full height */
 }
 
 /* homepage */
 .home {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  height: 100%;
-  overflow: auto;
+  grid-template-columns: 3fr 3fr;
+  gap: 50px;
+  height: 100%; /* Take full height */
 }
 
 .smoke-details {
   background: #fff;
   border-radius: 4px;
+  margin: 20px auto;
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
-  flex: 1;
 }
 
 .smoke-details h4 {
