@@ -9,11 +9,13 @@ ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearS
 const StatisticsPage = () => {
   const { user } = useAuthContext()
   const [statistics, setStatistics] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchStatistics = async () => {
       try {
-        const response = await fetch('https://backend-ieyu.onrender.com/api/Smokes', {
+        const response = await fetch('https://backend-ieyu.onrender.com/api/Smokes/statistics', {
           headers: {
             'Authorization': `Bearer ${user.token}`
           }
@@ -23,8 +25,11 @@ const StatisticsPage = () => {
         }
         const data = await response.json()
         setStatistics(data)
+        setLoading(false)
       } catch (error) {
         console.error('Failed to fetch statistics:', error)
+        setError(error.message)
+        setLoading(false)
       }
     }
 
@@ -33,8 +38,16 @@ const StatisticsPage = () => {
     }
   }, [user])
 
-  if (!statistics) {
+  if (loading) {
     return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>
+  }
+
+  if (!statistics) {
+    return <div>No data available</div>
   }
 
   const pieData = {
@@ -42,7 +55,7 @@ const StatisticsPage = () => {
     datasets: [
       {
         label: '# of Tests',
-        data: [statistics.totalPassed, statistics.totalFailed],
+        data: [statistics.totalPassed || 0, statistics.totalFailed || 0],
         backgroundColor: ['#4CAF50', '#F44336'],
         borderColor: ['#4CAF50', '#F44336'],
         borderWidth: 1,
@@ -51,11 +64,11 @@ const StatisticsPage = () => {
   }
 
   const barData = {
-    labels: statistics.opacityData.map((data, index) => new Date(data.createdAt).toLocaleDateString()),
+    labels: statistics.opacityData?.map((data, index) => new Date(data.createdAt).toLocaleDateString()) || [],
     datasets: [
       {
         label: 'Opacity',
-        data: statistics.opacityData.map(data => parseFloat(data.opacity)),
+        data: statistics.opacityData?.map(data => parseFloat(data.opacity)) || [],
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
@@ -93,4 +106,3 @@ const StatisticsPage = () => {
 }
 
 export default StatisticsPage
-    
