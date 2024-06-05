@@ -124,6 +124,15 @@ header a {
   border-radius: 50%;
   color: #333;
 }
+.smoke-details .print-button {
+  margin-left: 10px;
+  cursor: pointer;
+  background: #4CAF50;
+  padding: 6px;
+  border-radius: 50%;
+  color: #fff;
+}
+
 
 /* new smoke form */
 label, input {
