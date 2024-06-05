@@ -31,6 +31,14 @@
 
 .chart-container {
   margin-top: 20px;
+  flex: 1;
+}
+
+.chart-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 h3 {

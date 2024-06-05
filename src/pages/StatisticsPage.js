@@ -93,13 +93,15 @@ const StatisticsPage = () => {
           <p>{statistics.totalFailed}</p>
         </div>
       </div>
-      <div className="chart-container">
-        <h3>Pass/Fail Distribution</h3>
-        <Pie data={pieData} />
-      </div>
-      <div className="chart-container">
-        <h3>MV Type Count</h3>
-        <Bar data={barData} />
+      <div className="chart-wrapper">
+        <div className="chart-container">
+          <h3>Pass/Fail Distribution</h3>
+          <Pie data={pieData} />
+        </div>
+        <div className="chart-container">
+          <h3>MV Type Count</h3>
+          <Bar data={barData} />
+        </div>
       </div>
     </div>
   )
