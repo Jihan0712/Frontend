@@ -46,4 +46,4 @@ const AppWithRouter = () => (
   </BrowserRouter>
 );
 
-export default AppWithRouter;git
+export default AppWithRouter;
