@@ -54,9 +54,9 @@
 }
 
 .pie-chart {
-  width: 100%;
-  height: 300px;
-  max-width: 400px; /* Ensures the pie chart does not exceed this width */
+  width: 50%;
+  height: 150px;
+  max-width: 300px; /* Ensures the pie chart does not exceed this width */
   margin: 0 auto; /* Centers the pie chart */
 }
 
