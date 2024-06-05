@@ -80,17 +80,19 @@ header a {
 /* homepage */
 .home {
   display: grid;
-  grid-template-columns: 3fr 3fr;
-  gap: 50px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  height: 100%;
+  overflow: auto;
 }
 
 .smoke-details {
   background: #fff;
   border-radius: 4px;
-  margin: 20px auto;
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  flex: 1;
 }
 
 .smoke-details h4 {
