@@ -148,3 +148,28 @@ form.signup, form.login {
   background: #fff;
   border-radius: 4px;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pagination button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.pagination button.active {
+  background: #333;
+}
+
+.pagination button:hover {
+  background: #555;
+}

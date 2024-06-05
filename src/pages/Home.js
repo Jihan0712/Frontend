@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSmokesContext } from "../hooks/useSmokesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-import './Home.css';
 
 // components
 import SmokeDetails from "../components/SmokeDetails";
