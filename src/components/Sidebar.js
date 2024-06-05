@@ -15,12 +15,12 @@ const Sidebar = () => {
     <aside className="sidebar">
       <div className="sidebar-container">
         <Link to="/">
-          <h1>Thesis</h1>
+          <h1>{user.email}</h1>
         </Link>
         <nav>
           {user ? (
             <div>
-              <span>{user.email}</span>
+              <Link to="/">Data page</Link>
               <Link to="/dashboard">Dashboard</Link>
               <Link to="/print-result">Print Result</Link>
               <button onClick={handleClick} className="logout-button">Log out</button>
