@@ -1,46 +1,39 @@
-import { Link } from 'react-router-dom'
-import { useLogout } from '../hooks/useLogout'
-import { useAuthContext } from '../hooks/useAuthContext'
-import './Sidebar.css'
+import { Link } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
+import { useAuthContext } from '../hooks/useAuthContext';
+import './Sidebar.css';
 
 const Sidebar = () => {
-  const { logout } = useLogout()
-  const { user } = useAuthContext()
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
 
   const handleClick = () => {
-    logout()
-  }
+    logout();
+  };
 
   return (
     <aside className="sidebar">
       <div className="sidebar-container">
-        <div className="sidebar-header">
-          <Link to="/">
-            <h1>Thesis</h1>
-          </Link>
-        </div>
-        <div className="sidebar-user">
-          {user && (
-            <span>{user.email}</span>
-          )}
-        </div>
+        <Link to="/">
+          <h1>Thesis</h1>
+        </Link>
         <nav>
-          <ul className="sidebar-menu">
-            <li><Link to="/">Dashboard</Link></li>
-            <li><Link to="/user-info">User Information</Link></li>
-            <li><Link to="/print-result">Print Result</Link></li>
-            <li><Link to="/customer-view">Customer View</Link></li>
-            <li><Link to="/statistics">Statistics</Link></li>
-          </ul>
+          {user ? (
+            <div>
+              <span>{user.email}</span>
+              <Link to="/dashboard">Dashboard</Link>
+              <button onClick={handleClick} className="logout-button">Log out</button>
+            </div>
+          ) : (
+            <div>
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Signup</Link>
+            </div>
+          )}
         </nav>
-        {user && (
-          <div className="sidebar-footer">
-            <button onClick={handleClick} className="logout-button">Log out</button>
-          </div>
-        )}
       </div>
     </aside>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
