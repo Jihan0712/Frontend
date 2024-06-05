@@ -3,7 +3,7 @@ import { useSmokesContext } from '../hooks/useSmokesContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import SmokeDetails from '../components/SmokeDetails';
 import SmokeForm from '../components/SmokeForm';
-import './Home.css';
+import './Home.css'; // Ensure this path is correct
 
 const Home = () => {
   const { smokes, dispatch } = useSmokesContext();
@@ -46,7 +46,7 @@ const Home = () => {
       <SmokeForm />
       <div className="pagination">
         {Array.from({ length: Math.ceil(smokes.length / smokesPerPage) }, (_, index) => (
-          <button key={index} onClick={() => paginate(index + 1)} className={currentPage === index + 1 ? 'active' : ''}>
+          <button key={index} onClick={() => paginate(index + 1)}>
             {index + 1}
           </button>
         ))}
