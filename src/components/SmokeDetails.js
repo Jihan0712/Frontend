@@ -20,7 +20,7 @@ const SmokeDetails = ({ smoke }) => {
     }
 
     try {
-      const response = await fetch('/api/smokes/' + smoke._id, {
+      const response = await fetch('https://backend-ieyu.onrender.comhttps://backend-ieyu.onrender.com/api/smokes/' + smoke._id, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${user.token}`
@@ -59,7 +59,7 @@ const SmokeDetails = ({ smoke }) => {
     }
 
     try {
-      const response = await fetch('/api/smokes/' + smoke._id, {
+      const response = await fetch('https://backend-ieyu.onrender.comhttps://backend-ieyu.onrender.com/api/smokes/' + smoke._id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

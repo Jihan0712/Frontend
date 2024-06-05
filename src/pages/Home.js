@@ -12,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchSmokes = async () => {
-      const response = await fetch('/api/Smokes', {
+      const response = await fetch('https://backend-ieyu.onrender.com/api/Smokes', {
         headers: {'Authorization': `Bearer ${user.token}`},
       })
       const json = await response.json()

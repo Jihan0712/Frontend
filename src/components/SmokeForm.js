@@ -20,7 +20,7 @@ const SmokeForm = () => {
 
     const smoke = {smoke_result, opacity}
     
-    const response = await fetch('/api/smokes', {
+    const response = await fetch('https://backend-ieyu.onrender.com/api/smokes', {
       method: 'POST',
       body: JSON.stringify(smoke),
       headers: {
