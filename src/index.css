@@ -6,12 +6,16 @@
   --primary: #1aac83;
   --error: #e7195a;
 }
-body {
-  background: #f1f1f1;
+
+body, html {
+  background: #2b2b2b; /* Adjusted to match the dashboard background */
   margin: 0;
-  font-family: "Poppins";
   padding: 0; /* Remove the margin to avoid unnecessary spacing */
+  font-family: "Poppins";
+  height: 100%;
+  width: 100%;
 }
+
 header {
   background: #fff;
   padding: 10px 20px;
@@ -19,6 +23,7 @@ header {
   align-items: center;
   justify-content: space-between;
 }
+
 header .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -27,13 +32,13 @@ header .container {
   align-items: center;
   justify-content: space-between;
 }
+
 header a {
   color: #333;
   text-decoration: none;
 }
 
-
-.pages{
+.pages {
   max-width: 1400px;
   padding-left: 20px;
   margin: 0 auto;
@@ -58,6 +63,7 @@ header a {
   grid-template-columns: 3fr 3fr;
   gap: 50px;
 }
+
 .smoke-details {
   background: #fff;
   border-radius: 4px;
@@ -66,11 +72,13 @@ header a {
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
+
 .smoke-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: var(--primary);
 }
+
 .smoke-details p {
   margin: 0;
   font-size: 0.9em;
@@ -96,18 +104,19 @@ header a {
 }
 
 .smoke-details .update-button {
-  margin-left: -10px; /* Move the update button 10px to the left */  cursor: pointer;
+  margin-left: -10px; /* Move the update button 10px to the left */  
+  cursor: pointer;
   background: #f1f1f1;
   padding: 6px;
   border-radius: 50%;
   color: #333;
 }
 
-
 /* new smoke form */
 label, input {
   display: block;
 }
+
 input {
   padding: 10px;
   margin-top: 10px;
@@ -117,6 +126,7 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
 form button {
   background: var(--primary);
   border: 0;
@@ -126,6 +136,7 @@ form button {
   border-radius: 4px;
   cursor: pointer;
 }
+
 div.error {
   padding: 10px;
   background: #ffefef;
@@ -134,11 +145,10 @@ div.error {
   border-radius: 4px;
   margin: 20px 0;
 }
+
 input.error {
   border: 1px solid var(--error);
 }
-
-
 
 /* auth forms */
 form.signup, form.login {
@@ -170,4 +180,3 @@ form.signup, form.login {
 .pagination button:hover {
   background: darken(var(--primary), 10%);
 }
-
