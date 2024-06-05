@@ -21,8 +21,7 @@ const Sidebar = () => {
           {user ? (
             <div>
               <span>{user.email}</span>
-              <Link to="/">Home</Link>
-              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/dashboard">Dashboard</Link> {/* Update the link to Dashboard */}
               <button onClick={handleClick} className="logout-button">Log out</button>
             </div>
           ) : (

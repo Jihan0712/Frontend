@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useAuthContext } from '../hooks/useAuthContext'  // Import useAuthContext hook
 import SmokeStatistics from '../components/SmokeStatistics'
 
 const DashboardPage = () => {

@@ -6,7 +6,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Sidebar from './components/Sidebar'
-import DashboardPage from './pages/DashboardPage'
+import DashboardPage from './pages/DashboardPage' // Import the renamed DashboardPage
 
 function App() {
   const { user } = useAuthContext()
@@ -23,16 +23,16 @@ function App() {
             element={user ? <Home /> : <Navigate to="/login" />} 
           />
           <Route 
-            path="/dashboard" 
-            element={user ? <DashboardPage /> : <Navigate to="/login" />} 
-          />
-          <Route 
             path="/login" 
             element={!user ? <Login /> : <Navigate to="/" />} 
           />
           <Route 
             path="/signup" 
             element={!user ? <Signup /> : <Navigate to="/" />} 
+          />
+          <Route 
+            path="/dashboard" // Add the route for DashboardPage
+            element={user ? <DashboardPage /> : <Navigate to="/login" />} 
           />
         </Routes>
       </div>
