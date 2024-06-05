@@ -1,17 +1,17 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { useAuthContext } from './hooks/useAuthContext'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { useAuthContext } from './hooks/useAuthContext';
 
 // pages & components
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
-import DashboardPage from './pages/DashboardPage' // Make sure this import is correct
-import Sidebar from './components/Sidebar'
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Sidebar from './components/Sidebar';
+import DashboardPage from './pages/DashboardPage'; // Ensure the correct path
 
 function App() {
-  const { user } = useAuthContext()
-  const location = useLocation()
-  const showSidebar = location.pathname !== '/login' && location.pathname !== '/signup'
+  const { user } = useAuthContext();
+  const location = useLocation();
+  const showSidebar = location.pathname !== '/login' && location.pathname !== '/signup';
 
   return (
     <div className="App">
@@ -30,20 +30,20 @@ function App() {
             path="/signup" 
             element={!user ? <Signup /> : <Navigate to="/" />} 
           />
-          <Route 
-            path="/dashboard" 
+          <Route
+            path="/dashboard"
             element={user ? <DashboardPage /> : <Navigate to="/login" />}
           />
         </Routes>
       </div>
     </div>
-  )
+  );
 }
 
 const AppWithRouter = () => (
   <BrowserRouter>
     <App />
   </BrowserRouter>
-)
+);
 
-export default AppWithRouter
+export default AppWithRouter;
