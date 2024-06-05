@@ -7,14 +7,14 @@
   align-items: center;
 }
 
-.dashboard-summary {
+.statistics-cards {
   display: flex;
   justify-content: space-around;
   margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
-.summary-card {
+.card {
   background-color: #333;
   padding: 20px;
   border-radius: 8px;
@@ -25,37 +25,34 @@
   box-sizing: border-box;
 }
 
-.summary-card h2 {
+.card h2 {
   margin-bottom: 10px;
   color: #ffffff;
 }
 
-.summary-card p {
+.card p {
   font-size: 24px;
   font-weight: bold;
 }
 
-.charts-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: 20px;
-}
-
-.chart {
-  background-color: #333;
-  padding: 20px;
-  border-radius: 8px;
+.chart-container {
+  margin-top: 20px;
   flex: 1;
   min-width: 300px;
+  max-width: 45%;
   box-sizing: border-box;
 }
 
-.chart h3 {
-  color: #ffffff;
+.chart-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+h3 {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .sidebar {
