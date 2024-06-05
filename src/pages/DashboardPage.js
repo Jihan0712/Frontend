@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSmokesContext } from '../hooks/useSmokesContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { Pie, Bar } from 'react-chartjs-2';
+import './DashboardPage.css';
 
 const DashboardPage = () => {
   const { smokes, dispatch } = useSmokesContext();
@@ -64,10 +65,6 @@ const DashboardPage = () => {
   return (
     <div className="dashboard-page">
       <div className="dashboard-summary">
-        <div className="summary-card">
-          <h2>Total No. Users</h2>
-          <p>{/* Add the logic to display the total number of users */}</p>
-        </div>
         <div className="summary-card">
           <h2>Total Passed</h2>
           <p>{passedCount}</p>
