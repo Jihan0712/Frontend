@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-route
 import { useAuthContext } from './hooks/useAuthContext';
 
 // pages & components
-import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Sidebar from './components/Sidebar';
