@@ -67,6 +67,8 @@ header a {
   height: 100%; /* Ensure it takes full height */
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   overflow: hidden; /* Ensure no overflow */
 }
 
@@ -77,32 +79,20 @@ header a {
 
 /* homepage */
 .home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background-color: #1e1e1e;
-  color: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   height: 100%;
-  overflow: hidden; /* Ensure no overflow */
-}
-
-.smokes {
-  width: 100%;
-  max-width: 800px;
-  margin-bottom: 20px;
-  overflow-y: auto; /* Scroll only within this container */
-  flex-grow: 1; /* Allow it to grow to take available space */
+  overflow: auto;
 }
 
 .smoke-details {
   background: #fff;
   border-radius: 4px;
-  margin: 10px 0;
   padding: 20px;
   position: relative;
-  color: #333;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  flex: 1;
 }
 
 .smoke-details h4 {
@@ -117,9 +107,8 @@ header a {
   color: #555;
 }
 
-.smoke-details .delete-button,
-.smoke-details .update-button {
-  margin-right: 10px; /* Add some space to the right of the buttons */
+.smoke-details .delete-button {
+  margin-right: 10px; /* Add some space to the right of the delete button */
   cursor: pointer;
   background: #f1f1f1;
   padding: 6px;
@@ -127,34 +116,89 @@ header a {
   color: #333;
 }
 
+.smoke-details .edit-button {
+  margin-left: 10px; /* Add some space to the left of the edit button */
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+
+.smoke-details .update-button {
+  margin-left: -10px; /* Move the update button 10px to the left */
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+
+/* new smoke form */
+label, input {
+  display: block;
+}
+
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+input.error {
+  border: 1px solid var(--error);
+}
+
+/* auth forms */
+form.signup, form.login {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+/* Add this at the end of your index.css */
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  flex-shrink: 0; /* Prevent the pagination from shrinking */
+  margin: 20px 0;
 }
 
 .pagination button {
-  background-color: #2a2a2a;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
   margin: 0 5px;
+  font-family: "Poppins";
+  border-radius: 4px;
   cursor: pointer;
-  border-radius: 5px;
-}
-
-.pagination button.active {
-  background-color: #17a2b8;
 }
 
 .pagination button:hover {
-  background-color: #0f6674;
-}
-
-@media (max-width: 768px) {
-  .smokes {
-    width: 100%;
-    padding: 0 10px;
-  }
+  background: darken(var(--primary), 10%);
 }
