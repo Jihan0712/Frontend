@@ -12,13 +12,20 @@ const StatisticsPage = () => {
 
   useEffect(() => {
     const fetchStatistics = async () => {
-      const response = await fetch('https://backend-ieyu.onrender.com/api/Smokes', {
-        headers: {
-          'Authorization': `Bearer ${user.token}`
+      try {
+        const response = await fetch('http://localhost:5000/api/statistics', {
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
+        })
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
         }
-      })
-      const data = await response.json()
-      setStatistics(data)
+        const data = await response.json()
+        setStatistics(data)
+      } catch (error) {
+        console.error('Failed to fetch statistics:', error)
+      }
     }
 
     if (user) {
@@ -44,7 +51,7 @@ const StatisticsPage = () => {
   }
 
   const barData = {
-    labels: statistics.opacityData.map((data, index) => `Test ${index + 1}`),
+    labels: statistics.opacityData.map((data, index) => new Date(data.createdAt).toLocaleDateString()),
     datasets: [
       {
         label: 'Opacity',
