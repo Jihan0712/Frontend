@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
+// Removed the unused import
 import './StatisticsPage.css';
 
 const StatisticsPage = () => {
