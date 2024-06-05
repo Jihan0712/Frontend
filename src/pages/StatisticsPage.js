@@ -15,7 +15,7 @@ const StatisticsPage = () => {
   useEffect(() => {
     const fetchStatistics = async () => {
       try {
-        const response = await fetch('https://backend-ieyu.onrender.com/api/Smokes/statistics', {
+        const response = await fetch('https://backend-ieyu.onrender.com/api/statistics', {
           headers: {
             'Authorization': `Bearer ${user.token}`
           }
