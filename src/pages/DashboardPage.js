@@ -1,30 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSmokesContext } from '../hooks/useSmokesContext';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { Bar, Pie } from 'react-chartjs-2';
-import './DashboardPage.css';
+import SmokeStatistics from '../components/SmokeStatistics';
+import { Pie, Bar } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
 
 const DashboardPage = () => {
   const { smokes, dispatch } = useSmokesContext();
   const { user } = useAuthContext();
   const [passedCount, setPassedCount] = useState(0);
   const [failedCount, setFailedCount] = useState(0);
+  const [mvTypeCount, setMvTypeCount] = useState({});
 
   useEffect(() => {
     const fetchSmokes = async () => {
-      const response = await fetch('https://backend-ieyu.onrender.com/api/smokes', {
-        headers: { 'Authorization': `Bearer ${user.token}` }
-      });
-      const json = await response.json();
-
-      if (response.ok) {
-        dispatch({ type: 'SET_SMOKES', payload: json });
+      if (!user) return;
+      try {
+        const response = await fetch('https://backend-ieyu.onrender.com/api/smokes', {
+          headers: { 'Authorization': `Bearer ${user.token}` },
+        });
+        const json = await response.json();
+        if (response.ok) {
+          dispatch({ type: 'SET_SMOKES', payload: json });
+        }
+      } catch (error) {
+        console.error('Failed to fetch smokes:', error);
       }
     };
 
-    if (user) {
-      fetchSmokes();
-    }
+    fetchSmokes();
   }, [dispatch, user]);
 
   useEffect(() => {
@@ -33,42 +37,38 @@ const DashboardPage = () => {
       const failed = smokes.filter(smoke => smoke.smoke_result === 'Failed').length;
       setPassedCount(passed);
       setFailedCount(failed);
+
+      const mvTypeCount = smokes.reduce((acc, smoke) => {
+        acc[smoke.mvType] = (acc[smoke.mvType] || 0) + 1;
+        return acc;
+      }, {});
+      setMvTypeCount(mvTypeCount);
     }
   }, [smokes]);
 
   const pieData = {
     labels: ['Passed', 'Failed'],
-    datasets: [
-      {
-        data: [passedCount, failedCount],
-        backgroundColor: ['#4CAF50', '#FF5252']
-      }
-    ]
+    datasets: [{
+      data: [passedCount, failedCount],
+      backgroundColor: ['#36A2EB', '#FF6384'],
+    }],
   };
 
   const barData = {
-    labels: [...new Set(smokes.map(smoke => smoke.mvType))],
-    datasets: [
-      {
-        label: 'MV Type Count',
-        data: smokes.reduce((acc, smoke) => {
-          const type = smoke.mvType;
-          if (!acc[type]) acc[type] = 0;
-          acc[type]++;
-          return acc;
-        }, {}),
-        backgroundColor: '#29b6f6'
-      }
-    ]
+    labels: Object.keys(mvTypeCount),
+    datasets: [{
+      label: 'MV Type Count',
+      data: Object.values(mvTypeCount),
+      backgroundColor: '#36A2EB',
+    }],
   };
 
   return (
     <div className="dashboard-page">
-      <h1>Dashboard</h1>
       <div className="dashboard-summary">
         <div className="summary-card">
           <h2>Total No. Users</h2>
-          <p>12</p>
+          <p>{/* Add the logic to display the total number of users */}</p>
         </div>
         <div className="summary-card">
           <h2>Total Passed</h2>

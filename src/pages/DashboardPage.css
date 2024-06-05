@@ -124,16 +124,11 @@ h3 {
   text-align: center;
 }
 
-.chart-container {
-  margin-top: 20px;
-  flex: 1;
-  min-width: 300px;
-  max-width: 45%;
-  box-sizing: border-box;
+.charts-container {
+  display: flex;
+  justify-content: space-between;
 }
 
-.charts-container .chart {
-  flex: 1;
-  max-width: 45%;
+.chart {
+  width: 45%;
 }
-
