@@ -1,15 +1,15 @@
-import { Link } from 'react-router-dom'
-import { useLogout } from '../hooks/useLogout'
-import { useAuthContext } from '../hooks/useAuthContext'
-import './Sidebar.css'
+import { Link } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
+import { useAuthContext } from '../hooks/useAuthContext';
+import './Sidebar.css';
 
 const Sidebar = () => {
-  const { logout } = useLogout()
-  const { user } = useAuthContext()
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
 
   const handleClick = () => {
-    logout()
-  }
+    logout();
+  };
 
   return (
     <aside className="sidebar">
@@ -21,7 +21,7 @@ const Sidebar = () => {
           {user ? (
             <div>
               <span>{user.email}</span>
-              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/">Dashboard</Link>
               <Link to="/user-information">User Information</Link>
               <Link to="/print-result">Print Result</Link>
               <button onClick={handleClick} className="logout-button">Log out</button>
@@ -35,7 +35,7 @@ const Sidebar = () => {
         </nav>
       </div>
     </aside>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

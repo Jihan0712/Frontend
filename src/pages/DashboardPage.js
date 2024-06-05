@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
-import './StatisticsPage.css';
+import 'chart.js/auto';
 
-const StatisticsPage = () => {
+const DashboardPage = () => {
   const [statistics, setStatistics] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchStatistics = async () => {
       try {
-        const response = await fetch('https://backend-ieyu.onrender.com/api/statistics');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+        const response = await fetch('https://backend-ieyu.onrender.com/api/Smokes');
         const data = await response.json();
         setStatistics(data);
+        setLoading(false);
       } catch (error) {
         console.error('Failed to fetch statistics:', error);
       }
@@ -22,62 +21,64 @@ const StatisticsPage = () => {
     fetchStatistics();
   }, []);
 
-  if (!statistics) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
+  const passedCount = statistics.filter(test => test.smoke_result === 'Passed').length;
+  const failedCount = statistics.filter(test => test.smoke_result === 'Failed').length;
+
+  const mvTypeCounts = statistics.reduce((acc, curr) => {
+    acc[curr.mvType] = (acc[curr.mvType] || 0) + 1;
+    return acc;
+  }, {});
+
   const pieData = {
     labels: ['Passed', 'Failed'],
-    datasets: [
-      {
-        data: [statistics.passedCount, statistics.failedCount],
-        backgroundColor: ['#4caf50', '#f44336'],
-      },
-    ],
+    datasets: [{
+      data: [passedCount, failedCount],
+      backgroundColor: ['#4CAF50', '#FF5252'],
+    }],
   };
 
   const barData = {
-    labels: Object.keys(statistics.mvTypeCount),
-    datasets: [
-      {
-        label: 'MV Type Count',
-        data: Object.values(statistics.mvTypeCount),
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
-        borderWidth: 1,
-      },
-    ],
+    labels: Object.keys(mvTypeCounts),
+    datasets: [{
+      label: 'MV Type Count',
+      data: Object.values(mvTypeCounts),
+      backgroundColor: '#4CAF50',
+    }],
   };
 
   return (
-    <div className="statistics-container">
+    <div className="dashboard-container">
       <h2>Dashboard</h2>
       <div className="statistics-cards">
         <div className="card">
           <h3>Total No. Users</h3>
-          <p>{statistics.totalUsers}</p>
+          <p>{statistics.length}</p>
         </div>
         <div className="card">
           <h3>Total Passed</h3>
-          <p>{statistics.passedCount}</p>
+          <p>{passedCount}</p>
         </div>
         <div className="card">
           <h3>Total Failed</h3>
-          <p>{statistics.failedCount}</p>
+          <p>{failedCount}</p>
         </div>
       </div>
       <div className="charts">
         <div className="chart-container">
           <h3>Pass/Fail Distribution</h3>
-          <Pie data={pieData} width={200} height={200} />
+          <Pie data={pieData} />
         </div>
         <div className="chart-container">
           <h3>MV Type Count</h3>
-          <Bar data={barData} width={400} height={200} />
+          <Bar data={barData} />
         </div>
       </div>
     </div>
   );
 };
 
-export default StatisticsPage;
+export default DashboardPage;
