@@ -131,6 +131,7 @@ header a {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  flex-shrink: 0; /* Prevent the pagination from shrinking */
 }
 
 .pagination button {
