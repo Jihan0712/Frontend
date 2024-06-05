@@ -36,7 +36,6 @@
 }
 
 .chart-container {
-  margin-top: 20px;
   width: 100%;
 }
 
@@ -46,6 +45,11 @@
   gap: 20px;
   width: 100%;
   flex-wrap: wrap;
+}
+
+.chart {
+  flex: 1;
+  min-width: 300px;
 }
 
 h3 {

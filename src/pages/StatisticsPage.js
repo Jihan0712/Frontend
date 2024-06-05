@@ -94,11 +94,11 @@ const StatisticsPage = () => {
         </div>
       </div>
       <div className="chart-wrapper">
-        <div className="chart-container">
+        <div className="chart-container chart">
           <h3>Pass/Fail Distribution</h3>
           <Pie data={pieData} />
         </div>
-        <div className="chart-container">
+        <div className="chart-container chart">
           <h3>MV Type Count</h3>
           <Bar data={barData} />
         </div>
