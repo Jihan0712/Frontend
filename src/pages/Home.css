@@ -5,7 +5,7 @@
   padding: 20px;
   background-color: #1e1e1e;
   color: #ffffff;
-  height: calc(100% - 40px); /* Adjust for the header */
+  height: 100%; /* Adjust for the header */
   overflow: hidden;
 }
 

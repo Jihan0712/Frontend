@@ -202,3 +202,27 @@ form.signup, form.login {
 .pagination button:hover {
   background: darken(var(--primary), 10%);
 }
+
+@media (max-width: 768px) {
+  .content-with-sidebar {
+    margin-left: 0; /* Remove the margin */
+    padding: 10px; /* Adjust padding */
+    width: 100%; /* Full width */
+    justify-content: flex-start; /* Align items at the top */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+
+  .home {
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 10px; /* Reduce gap */
+  }
+
+  .pagination {
+    flex-direction: column; /* Stack buttons vertically */
+    margin-top: 10px;
+  }
+
+  .pagination button {
+    margin: 5px 0; /* Adjust margin */
+  }
+}
