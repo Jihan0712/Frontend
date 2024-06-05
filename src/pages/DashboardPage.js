@@ -1,87 +1,73 @@
 import { useEffect, useState } from 'react';
 import { useSmokesContext } from '../hooks/useSmokesContext';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { Pie, Bar } from 'react-chartjs-2';
-import './DashboardPage.css';
 
 const DashboardPage = () => {
   const { smokes, dispatch } = useSmokesContext();
   const { user } = useAuthContext();
-  const [passedCount, setPassedCount] = useState(0);
-  const [failedCount, setFailedCount] = useState(0);
-  const [mvTypeCount, setMvTypeCount] = useState({});
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [totalPassed, setTotalPassed] = useState(0);
+  const [totalFailed, setTotalFailed] = useState(0);
+  const [mvTypeData, setMvTypeData] = useState([]);
 
   useEffect(() => {
-    const fetchSmokes = async () => {
+    const fetchStatistics = async () => {
       if (!user) return;
       try {
-        const response = await fetch('https://backend-ieyu.onrender.com/api/smokes', {
+        const response = await fetch('https://backend-ieyu.onrender.com/api/statistics', {
           headers: { 'Authorization': `Bearer ${user.token}` },
         });
-        const json = await response.json();
+        const data = await response.json();
         if (response.ok) {
-          dispatch({ type: 'SET_SMOKES', payload: json });
+          setTotalUsers(data.totalUsers);
+          setTotalPassed(data.totalPassed);
+          setTotalFailed(data.totalFailed);
+          setMvTypeData(data.mvTypeData);
+        } else {
+          console.error('Failed to fetch statistics:', data.message);
         }
       } catch (error) {
-        console.error('Failed to fetch smokes:', error);
+        console.error('Failed to fetch statistics:', error);
       }
     };
 
-    fetchSmokes();
-  }, [dispatch, user]);
-
-  useEffect(() => {
-    if (smokes) {
-      const passed = smokes.filter(smoke => smoke.smoke_result === 'Passed').length;
-      const failed = smokes.filter(smoke => smoke.smoke_result === 'Failed').length;
-      setPassedCount(passed);
-      setFailedCount(failed);
-
-      const mvTypeCount = smokes.reduce((acc, smoke) => {
-        acc[smoke.mvType] = (acc[smoke.mvType] || 0) + 1;
-        return acc;
-      }, {});
-      setMvTypeCount(mvTypeCount);
-    }
-  }, [smokes]);
-
-  const pieData = {
-    labels: ['Passed', 'Failed'],
-    datasets: [{
-      data: [passedCount, failedCount],
-      backgroundColor: ['#36A2EB', '#FF6384'],
-    }],
-  };
-
-  const barData = {
-    labels: Object.keys(mvTypeCount),
-    datasets: [{
-      label: 'MV Type Count',
-      data: Object.values(mvTypeCount),
-      backgroundColor: '#36A2EB',
-    }],
-  };
+    fetchStatistics();
+  }, [user]);
 
   return (
     <div className="dashboard-page">
       <div className="dashboard-summary">
         <div className="summary-card">
+          <h2>Total No. Users</h2>
+          <p>{totalUsers}</p>
+        </div>
+        <div className="summary-card">
           <h2>Total Passed</h2>
-          <p>{passedCount}</p>
+          <p>{totalPassed}</p>
         </div>
         <div className="summary-card">
           <h2>Total Failed</h2>
-          <p>{failedCount}</p>
+          <p>{totalFailed}</p>
         </div>
       </div>
       <div className="charts-container">
         <div className="chart">
           <h3>Pass/Fail Distribution</h3>
-          <Pie data={pieData} />
+          <div className="pie-chart">
+            <div className="pie-slice passed" style={{ '--value': totalPassed }}></div>
+            <div className="pie-slice failed" style={{ '--value': totalFailed }}></div>
+          </div>
         </div>
         <div className="chart">
           <h3>MV Type Count</h3>
-          <Bar data={barData} />
+          <div className="bar-chart">
+            {mvTypeData.map((item) => (
+              <div key={item._id} className="bar">
+                <div className="bar-fill" style={{ height: `${item.count * 10}px` }}></div>
+                <span>{item._id}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

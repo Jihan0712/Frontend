@@ -37,26 +37,64 @@
 
 .charts-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  gap: 20px;
-  width: 100%;
-  margin-top: 20px;
+  flex-wrap: wrap;
 }
 
 .chart {
   background-color: #333;
   padding: 20px;
   border-radius: 8px;
+  text-align: center;
   flex: 1;
-  min-width: 300px;
-  max-width: 45%;
-  box-sizing: border-box;
   margin: 10px;
+  min-width: 300px;
+  box-sizing: border-box;
 }
 
 .chart h3 {
-  text-align: center;
   margin-bottom: 10px;
   color: #ffffff;
+}
+
+.pie-chart {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.pie-slice {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip: rect(0, 100px, 200px, 0);
+}
+
+.pie-slice.passed {
+  background: #36A2EB;
+  clip: rect(auto, auto, auto, auto);
+  transform: rotate(calc(var(--value) * 3.6deg));
+}
+
+.pie-slice.failed {
+  background: #FF6384;
+  transform: rotate(calc(var(--value) * 3.6deg));
+}
+
+.bar-chart {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bar {
+  text-align: center;
+}
+
+.bar-fill {
+  width: 20px;
+  background-color: #36A2EB;
+  margin-bottom: 5px;
 }
