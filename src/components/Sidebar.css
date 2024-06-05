@@ -8,44 +8,44 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-  }
-  
-  .sidebar-container {
+}
+
+.sidebar-container {
     display: flex;
     flex-direction: column;
     height: 100%;
-  }
-  
-  .sidebar h1 {
+}
+
+.sidebar h1 {
     color: #ffffff;
     font-size: 24px;
     margin-bottom: 20px;
-  }
-  
-  .sidebar nav {
+}
+
+.sidebar nav {
     flex-grow: 1;
-  }
-  
-  .sidebar nav a {
+}
+
+.sidebar nav a {
     color: #b0b0b0;
     text-decoration: none;
     margin-bottom: 10px;
     display: block;
     padding: 10px 15px;
     border-radius: 5px;
-  }
-  
-  .sidebar nav a:hover {
+}
+
+.sidebar nav a:hover {
     color: #ffffff;
     background-color: #404040;
-  }
-  
-  .sidebar nav .active {
+}
+
+.sidebar nav .active {
     color: #ffffff;
     background-color: #3a3a3a;
-  }
-  
-  .sidebar nav .logout-button {
+}
+
+.sidebar nav .logout-button {
     margin-top: auto;
     padding: 10px 15px;
     background-color: #ff4d4d;
@@ -53,14 +53,143 @@
     border-radius: 5px;
     color: #ffffff;
     cursor: pointer;
-  }
-  
-  .sidebar nav .logout-button:hover {
+}
+
+.sidebar nav .logout-button:hover {
     background-color: #ff1a1a;
-  }
-  
-  .sidebar-container .user-email {
+}
+
+.sidebar-container .user-email {
     color: #ffffff;
     margin-bottom: 20px;
-  }
-  
+}
+/* Sidebar styles */
+.sidebar {
+    background-color: #2a2a2a; /* Dark background color */
+    color: #ffffff; /* White text color */
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.sidebar h1 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.sidebar nav {
+    flex-grow: 1;
+}
+
+.sidebar nav a {
+    color: #b0b0b0;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.sidebar nav a:hover {
+    color: #ffffff;
+    background-color: #404040;
+}
+
+.sidebar nav .active {
+    color: #ffffff;
+    background-color: #3a3a3a;
+}
+
+.sidebar nav .logout-button {
+    margin-top: auto;
+    padding: 10px 15px;
+    background-color: #ff4d4d;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.sidebar nav .logout-button:hover {
+    background-color: #ff1a1a;
+}
+
+.sidebar-container .user-email {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+/* Sidebar styles */
+.sidebar {
+  background-color: #2a2a2a; /* Dark background color */
+  color: #ffffff; /* White text color */
+  width: 250px;
+  position: fixed;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar h1 {
+  color: #ffffff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sidebar nav {
+  flex-grow: 1;
+}
+
+.sidebar nav a {
+  color: #b0b0b0;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.sidebar nav a:hover {
+  color: #ffffff;
+  background-color: #404040;
+}
+
+.sidebar nav .active {
+  color: #ffffff;
+  background-color: #3a3a3a;
+}
+
+.sidebar nav .logout-button {
+  margin-top: auto;
+  padding: 10px 15px;
+  background-color: #ff4d4d;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.sidebar nav .logout-button:hover {
+  background-color: #ff1a1a;
+}
+
+.sidebar-container .user-email {
+  color: #ffffff;
+  margin-bottom: 20px;
+}
