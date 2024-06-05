@@ -11,7 +11,7 @@ import StatisticsPage from './pages/StatisticsPage'
 function App() {
   const { user } = useAuthContext()
   const location = useLocation()
-  const showSidebar = !['/login', '/signup'].includes(location.pathname)
+  const showSidebar = location.pathname !== '/login' && location.pathname !== '/signup'
 
   return (
     <div className="App">
@@ -30,9 +30,9 @@ function App() {
             path="/signup" 
             element={!user ? <Signup /> : <Navigate to="/" />} 
           />
-          <Route 
-            path="/statistics" 
-            element={user ? <StatisticsPage /> : <Navigate to="/login" />} 
+          <Route
+            path="/statistics"
+            element={user ? <StatisticsPage /> : <Navigate to="/login" />}
           />
         </Routes>
       </div>

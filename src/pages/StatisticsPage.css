@@ -1,41 +1,88 @@
 .statistics-page {
-    padding: 20px;
-    color: white;
-  }
-  
-  .statistics-page h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .statistics-cards {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-  }
-  
-  .card {
-    background-color: #2c2c2c;
-    padding: 20px;
-    border-radius: 10px;
-    width: 30%;
-    text-align: center;
-  }
-  
-  .card h2 {
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
-  
-  .card p {
-    font-size: 24px;
-    margin: 0;
-  }
-  
-  .chart-container {
-    background-color: #2c2c2c;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  
+  padding: 20px;
+  background-color: #2b2b2b;
+  color: #ffffff;
+}
+
+.statistics-cards {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  flex: 1;
+  margin: 0 10px;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.card p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.chart-container {
+  margin-top: 20px;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  width: 250px;
+  position: fixed;
+  height: 100%;
+  padding: 20px;
+}
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h1 {
+  color: #ffffff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sidebar nav a {
+  color: #b0b0b0;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.sidebar nav a:hover {
+  color: #ffffff;
+}
+
+.sidebar nav .active {
+  color: #ffffff;
+}
+
+.sidebar .logout-button {
+  margin-top: auto;
+}
+
+.content {
+  margin-left: 270px;
+  padding: 20px;
+}
+
+.content-with-sidebar {
+  margin-left: 270px;
+  padding: 20px;
+}
