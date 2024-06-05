@@ -5,7 +5,7 @@ import { useAuthContext } from './hooks/useAuthContext';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Dashboard from './pages/StatisticsPage'; // Ensure this import path is correct
+import Dashboard from './pages/DashboardPage'; // Ensure this import path is correct
 import Sidebar from './components/Sidebar';
 
 function App() {
@@ -46,4 +46,4 @@ const AppWithRouter = () => (
   </BrowserRouter>
 );
 
-export default AppWithRouter;
+export default AppWithRouter;git
