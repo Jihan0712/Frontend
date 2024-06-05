@@ -109,8 +109,7 @@ const SmokeDetails = ({ smoke }) => {
     }
 
     try {
-      const response = await fetch(`https://backend-ieyu.onrender.com/api/smokes/print/${smoke._id}`, {
-        method: 'GET',
+      const response = await fetch('https://backend-ieyu.onrender.com/api/smokes/print/' + smoke._id, {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }
@@ -119,15 +118,13 @@ const SmokeDetails = ({ smoke }) => {
       if (response.ok) {
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'SmokeTest.docx';
-        document.body.appendChild(a);  // Append the anchor to the body
-        a.click();
-        document.body.removeChild(a);  // Remove the anchor from the body
+        window.open(url, '_blank');
+      } else {
+        throw new Error('Failed to generate document');
       }
     } catch (error) {
-      console.error('Failed to print smoke:', error);
+      console.error(error);
+      // Handle the error here, e.g. by showing an error message to the user
     }
   };
 
@@ -139,7 +136,7 @@ const SmokeDetails = ({ smoke }) => {
       <p>{smoke.createdAt}</p>
       <span onClick={handleDeleteClick} className='delete-button'>Delete</span>
       <span onClick={handleUpdateClick} className='update-button'>Update</span>
-      <span onClick={handlePrintClick} className='print-button'>Print</span> {/* Add this line */}
+      <span onClick={handlePrintClick} className='print-button'>Print</span>
 
       {isEditing && (
         <form onSubmit={handleFormSubmit} className="edit-form">

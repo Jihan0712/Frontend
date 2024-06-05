@@ -21,8 +21,8 @@ const Sidebar = () => {
           {user ? (
             <div>
               <span>{user.email}</span>
+              <Link to="/">User Data</Link>
               <Link to="/dashboard">Dashboard</Link>
-              <Link to="/print-result">Print Result</Link>
               <button onClick={handleClick} className="logout-button">Log out</button>
             </div>
           ) : (
