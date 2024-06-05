@@ -133,7 +133,7 @@ const SmokeDetails = ({ smoke }) => {
       <h4>{smoke.userEmail}</h4>
       <p><strong>Opacity: </strong>{opacity}</p> {/* Updated to use state */}
       <p><strong>Result: </strong>{smokeResult}</p> {/* Updated to use state */}
-      <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p>
+      <p>{new Date(smoke.createdAt).toLocaleString()}</p>
       <div className="buttons">
         <span onClick={handleDeleteClick} className='button delete-button'>Delete</span>
         <span onClick={handleUpdateClick} className='button update-button'>Update</span>
