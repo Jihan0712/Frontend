@@ -1,19 +1,56 @@
-import React from 'react'
-import { Pie } from 'react-chartjs-2'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import React, { useEffect, useState } from 'react'
+import { Pie, Bar } from 'react-chartjs-2'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+import { useAuthContext } from '../hooks/useAuthContext'
 import './StatisticsPage.css'
 
-ChartJS.register(ArcElement, Tooltip, Legend)
+ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 const StatisticsPage = () => {
-  const data = {
+  const { user } = useAuthContext()
+  const [statistics, setStatistics] = useState(null)
+
+  useEffect(() => {
+    const fetchStatistics = async () => {
+      const response = await fetch('https://your-backend-url/api/statistics', {
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      })
+      const data = await response.json()
+      setStatistics(data)
+    }
+
+    if (user) {
+      fetchStatistics()
+    }
+  }, [user])
+
+  if (!statistics) {
+    return <div>Loading...</div>
+  }
+
+  const pieData = {
     labels: ['Passed', 'Failed'],
     datasets: [
       {
         label: '# of Tests',
-        data: [1500, 56], // Example data, you can replace this with dynamic data
+        data: [statistics.totalPassed, statistics.totalFailed],
         backgroundColor: ['#4CAF50', '#F44336'],
         borderColor: ['#4CAF50', '#F44336'],
+        borderWidth: 1,
+      },
+    ],
+  }
+
+  const barData = {
+    labels: statistics.opacityData.map((data, index) => `Test ${index + 1}`),
+    datasets: [
+      {
+        label: 'Opacity',
+        data: statistics.opacityData.map(data => parseFloat(data.opacity)),
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
       },
     ],
@@ -25,23 +62,24 @@ const StatisticsPage = () => {
       <div className="statistics-cards">
         <div className="card">
           <h2>Total No. Users</h2>
-          <p>249</p>
-        </div>
-        <div className="card">
-          <h2>Total No. Vehicles</h2>
-          <p>25</p>
+          <p>{statistics.totalUsers}</p>
         </div>
         <div className="card">
           <h2>Total Passed</h2>
-          <p>1500</p>
+          <p>{statistics.totalPassed}</p>
         </div>
         <div className="card">
           <h2>Total Failed</h2>
-          <p>56</p>
+          <p>{statistics.totalFailed}</p>
         </div>
       </div>
       <div className="chart-container">
-        <Pie data={data} />
+        <h3>Pass/Fail Distribution</h3>
+        <Pie data={pieData} />
+      </div>
+      <div className="chart-container">
+        <h3>Opacity Levels</h3>
+        <Bar data={barData} />
       </div>
     </div>
   )
