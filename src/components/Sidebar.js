@@ -22,7 +22,7 @@ const Sidebar = () => {
             <div>
               <span>{user.email}</span>
               <Link to="/statistics">Statistics</Link>
-              <button onClick={handleClick}>Log out</button>
+              <button onClick={handleClick} className="logout-button">Log out</button>
             </div>
           ) : (
             <div>
