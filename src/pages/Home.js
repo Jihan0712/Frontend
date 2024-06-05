@@ -3,7 +3,7 @@ import { useSmokesContext } from '../hooks/useSmokesContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import SmokeDetails from '../components/SmokeDetails';
 import SmokeForm from '../components/SmokeForm';
-import '../Home.css';
+import './Home.css';
 
 const Home = () => {
   const { smokes, dispatch } = useSmokesContext();
