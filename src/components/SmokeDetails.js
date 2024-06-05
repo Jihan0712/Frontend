@@ -48,10 +48,10 @@ const SmokeDetails = ({ smoke }) => {
     if (!user) {
       return
     }
-     // eslint-disable-next-line no-restricted-globals
-    if (!confirm('Are you sure you want to delete this smoke?')) {
+    // eslint-disable-next-line no-restricted-globals
+    if (!confirm('Are you sure you want to update this smoke?')) {
       return
-    }   
+    }
 
     const updates = {
       opacity,
@@ -59,7 +59,7 @@ const SmokeDetails = ({ smoke }) => {
     }
 
     try {
-      const response = await fetch('/api/smokes/' + smoke._id, {
+      const response = await fetch('https://backend-ieyu.onrender.com/api/smokes/' + smoke._id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -84,8 +84,9 @@ const SmokeDetails = ({ smoke }) => {
         setSmokeResult(json.smoke_result)
 
         setIsEditing(false) // Hide the form after successful update
-              // Reload the page to reflect changes
-      window.location.reload();
+
+        // Reload the page to reflect changes
+        window.location.reload();
       } else {
         throw new Error('Failed to update smoke')
       }
