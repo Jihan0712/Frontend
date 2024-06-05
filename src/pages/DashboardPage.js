@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSmokesContext } from '../hooks/useSmokesContext';
 import { useAuthContext } from '../hooks/useAuthContext';
-import SmokeStatistics from '../components/SmokeStatistics';
 import { Pie, Bar } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
 
 const DashboardPage = () => {
   const { smokes, dispatch } = useSmokesContext();
