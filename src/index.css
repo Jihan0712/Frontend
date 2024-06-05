@@ -56,43 +56,34 @@ header a {
 .App {
   display: flex;
   height: 100%; /* Ensure it takes full height */
-  width: 100%;
 }
 
 .content-with-sidebar {
   margin-left: 250px; /* Adjust this value to create space between the sidebar and content */
   padding: 20px;
-  width: calc(100% - 250px);
-  box-sizing: border-box;
-  height: 100%; /* Ensure it takes full height */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; /* Ensure no overflow */
+  height: 100%;
+  overflow: auto;
 }
 
 .content {
   padding: 20px;
-  height: 100%; /* Ensure it takes full height */
 }
 
 /* homepage */
 .home {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  height: 100%;
-  overflow: auto;
+  grid-template-columns: 3fr 3fr;
+  gap: 50px;
+  height: 100%; /* Take full height */
 }
 
 .smoke-details {
   background: #fff;
   border-radius: 4px;
+  margin: 20px auto;
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
-  flex: 1;
 }
 
 .smoke-details h4 {
@@ -201,28 +192,4 @@ form.signup, form.login {
 
 .pagination button:hover {
   background: darken(var(--primary), 10%);
-}
-
-@media (max-width: 768px) {
-  .content-with-sidebar {
-    margin-left: 0; /* Remove the margin */
-    padding: 10px; /* Adjust padding */
-    width: 100%; /* Full width */
-    justify-content: flex-start; /* Align items at the top */
-    overflow-y: auto; /* Enable vertical scrolling */
-  }
-
-  .home {
-    grid-template-columns: 1fr; /* Single column layout */
-    gap: 10px; /* Reduce gap */
-  }
-
-  .pagination {
-    flex-direction: column; /* Stack buttons vertically */
-    margin-top: 10px;
-  }
-
-  .pagination button {
-    margin: 5px 0; /* Adjust margin */
-  }
 }
