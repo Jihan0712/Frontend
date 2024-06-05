@@ -40,7 +40,6 @@ const Login = () => {
               value={password} 
             />
           </div>
-          <a href="#" className="forgot-password"></a>
           <button type="submit" disabled={isLoading}>Sign in</button>
           {error && <div className="error">{error}</div>}
           <div className="register-text-box">
