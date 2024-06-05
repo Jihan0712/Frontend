@@ -64,7 +64,7 @@ const StatisticsPage = () => {
   }
 
   const barData = {
-    labels: statistics.opacityData?.map((data, index) => new Date(data.createdAt).toLocaleDateString()) || [],
+    labels: statistics.opacityData?.map((_, index) => `Test ${index + 1}`) || [],
     datasets: [
       {
         label: 'Opacity',
