@@ -64,11 +64,11 @@ const StatisticsPage = () => {
   }
 
   const barData = {
-    labels: statistics.opacityData?.map((_, index) => `Test ${index + 1}`) || [],
+    labels: statistics.mvTypeData?.map(data => data._id) || [],
     datasets: [
       {
-        label: 'Opacity',
-        data: statistics.opacityData?.map(data => parseFloat(data.opacity)) || [],
+        label: 'MV Type Count',
+        data: statistics.mvTypeData?.map(data => data.count) || [],
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
@@ -98,7 +98,7 @@ const StatisticsPage = () => {
         <Pie data={pieData} />
       </div>
       <div className="chart-container">
-        <h3>Opacity Levels</h3>
+        <h3>MV Type Count</h3>
         <Bar data={barData} />
       </div>
     </div>
