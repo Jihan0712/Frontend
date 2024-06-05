@@ -1,7 +1,7 @@
-/* src/pages/DashboardPage.css */
 .dashboard-container {
   padding: 20px;
   color: #ffffff;
+  margin-left: 250px;  /* Ensure there's space for the sidebar */
 }
 
 .statistics-cards {

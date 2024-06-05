@@ -35,13 +35,9 @@
 
 .sidebar .logout-button {
   margin-top: auto;
-  background-color: #f44336;
-  color: #ffffff;
+  background-color: #FF5252;
+  color: white;
   border: none;
   padding: 10px;
   cursor: pointer;
-}
-
-.sidebar .logout-button:hover {
-  background-color: #d32f2f;
 }

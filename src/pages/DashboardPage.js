@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
+import './DashboardPage.css';  // Import the CSS file
 
 const DashboardPage = () => {
   const [statistics, setStatistics] = useState(null);
