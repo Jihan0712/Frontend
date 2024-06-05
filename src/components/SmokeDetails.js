@@ -20,7 +20,7 @@ const SmokeDetails = ({ smoke }) => {
     }
 
     try {
-      const response = await fetch('backend-ieyu.onrender.com/api/smokes/' + smoke._id, {
+      const response = await fetch('https://backend-ieyu.onrender.com/api/smokes/' + smoke._id, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${user.token}`
