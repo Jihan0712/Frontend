@@ -133,10 +133,12 @@ const SmokeDetails = ({ smoke }) => {
       <h4>{smoke.userEmail}</h4>
       <p><strong>Opacity: </strong>{opacity}</p> {/* Updated to use state */}
       <p><strong>Result: </strong>{smokeResult}</p> {/* Updated to use state */}
-      <p>{smoke.createdAt}</p>
-      <span onClick={handleDeleteClick} className='delete-button'>Delete</span>
-      <span onClick={handleUpdateClick} className='update-button'>Update</span>
-      <span onClick={handlePrintClick} className='print-button'>Print</span>
+      <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p>
+      <div className="buttons">
+        <span onClick={handleDeleteClick} className='button delete-button'>Delete</span>
+        <span onClick={handleUpdateClick} className='button update-button'>Update</span>
+        <span onClick={handlePrintClick} className='button print-button'>Print</span>
+      </div>
 
       {isEditing && (
         <form onSubmit={handleFormSubmit} className="edit-form">

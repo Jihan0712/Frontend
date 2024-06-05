@@ -84,6 +84,9 @@ header a {
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .smoke-details h4 {
@@ -98,41 +101,34 @@ header a {
   color: #555;
 }
 
-.smoke-details .delete-button {
-  margin-right: 10px; /* Add some space to the right of the delete button */
-  cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
-  color: #333;
+.smoke-details .buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.smoke-details .edit-button {
-  margin-left: 10px; /* Add some space to the left of the edit button */
+.smoke-details .button {
   cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
-  color: #333;
+  background: var(--primary);
+  padding: 10px;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+  width: 80px;
+  margin: 5px 0;
+}
+
+.smoke-details .delete-button {
+  background: #e7195a;
 }
 
 .smoke-details .update-button {
-  margin-left: -10px; /* Move the update button 10px to the left */
-  cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
-  color: #333;
-}
-.smoke-details .print-button {
-  margin-left: 10px;
-  cursor: pointer;
-  background: #4CAF50;
-  padding: 6px;
-  border-radius: 50%;
-  color: #fff;
+  background: #1aac83;
 }
 
+.smoke-details .print-button {
+  background: #4CAF50;
+}
 
 /* new smoke form */
 label, input {
@@ -171,8 +167,6 @@ div.error {
 input.error {
   border: 1px solid var(--error);
 }
-
-
 
 /* Add this at the end of your index.css */
 .pagination {
