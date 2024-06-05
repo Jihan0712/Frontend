@@ -13,7 +13,7 @@ const StatisticsPage = () => {
   useEffect(() => {
     const fetchStatistics = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/statistics', {
+        const response = await fetch('https://backend-ieyu.onrender.com/api/Smokes', {
           headers: {
             'Authorization': `Bearer ${user.token}`
           }
@@ -93,3 +93,4 @@ const StatisticsPage = () => {
 }
 
 export default StatisticsPage
+    
