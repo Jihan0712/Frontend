@@ -149,6 +149,7 @@ form.signup, form.login {
   border-radius: 4px;
 }
 
+/* Add this at the end of your index.css */
 .pagination {
   display: flex;
   justify-content: center;
@@ -160,16 +161,13 @@ form.signup, form.login {
   border: 0;
   color: #fff;
   padding: 10px;
+  margin: 0 5px;
   font-family: "Poppins";
   border-radius: 4px;
   cursor: pointer;
-  margin: 0 5px;
-}
-
-.pagination button.active {
-  background: #333;
 }
 
 .pagination button:hover {
-  background: #555;
+  background: darken(var(--primary), 10%);
 }
+

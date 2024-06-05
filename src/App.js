@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Sidebar from './components/Sidebar';
-import DashboardPage from './pages/DashboardPage';
+import DashboardPage from './pages/DashboardPage'; // Ensure the path is correct
 
 function App() {
   const { user } = useAuthContext();

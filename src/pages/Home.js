@@ -1,21 +1,19 @@
-import { useEffect, useState } from "react";
-import { useSmokesContext } from "../hooks/useSmokesContext";
-import { useAuthContext } from "../hooks/useAuthContext";
-
-// components
-import SmokeDetails from "../components/SmokeDetails";
-import SmokeForm from "../components/SmokeForm";
+import { useEffect, useState } from 'react';
+import { useSmokesContext } from '../hooks/useSmokesContext';
+import { useAuthContext } from '../hooks/useAuthContext';
+import SmokeDetails from '../components/SmokeDetails';
+import SmokeForm from '../components/SmokeForm';
 
 const Home = () => {
   const { smokes, dispatch } = useSmokesContext();
   const { user } = useAuthContext();
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const [smokesPerPage] = useState(5);
 
   useEffect(() => {
     const fetchSmokes = async () => {
-      const response = await fetch('https://backend-ieyu.onrender.com/api/Smokes', {
-        headers: { 'Authorization': `Bearer ${user.token}` },
+      const response = await fetch('https://backend-ieyu.onrender.com/api/smokes', {
+        headers: { 'Authorization': `Bearer ${user.token}` }
       });
       const json = await response.json();
 
@@ -29,32 +27,23 @@ const Home = () => {
     }
   }, [dispatch, user]);
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  const indexOfLastSmoke = currentPage * smokesPerPage;
+  const indexOfFirstSmoke = indexOfLastSmoke - smokesPerPage;
+  const currentSmokes = smokes.slice(indexOfFirstSmoke, indexOfLastSmoke);
 
-  // Calculate the data to be displayed on the current page
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = smokes ? smokes.slice(indexOfFirstItem, indexOfLastItem) : [];
-
-  const totalPages = Math.ceil(smokes ? smokes.length / itemsPerPage : 0);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="home">
       <div className="smokes">
-        {currentItems && currentItems.map((smoke) => (
+        {currentSmokes && currentSmokes.map((smoke) => (
           <SmokeDetails key={smoke._id} smoke={smoke} />
         ))}
       </div>
       <SmokeForm />
       <div className="pagination">
-        {Array.from({ length: totalPages }, (_, index) => (
-          <button
-            key={index + 1}
-            onClick={() => handlePageChange(index + 1)}
-            className={currentPage === index + 1 ? 'active' : ''}
-          >
+        {Array.from({ length: Math.ceil(smokes.length / smokesPerPage) }, (_, index) => (
+          <button key={index} onClick={() => paginate(index + 1)}>
             {index + 1}
           </button>
         ))}
