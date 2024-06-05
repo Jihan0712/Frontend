@@ -1,88 +1,104 @@
-import { useEffect, useState } from 'react';
-import { useSmokesContext } from '../hooks/useSmokesContext';
-import { useAuthContext } from '../hooks/useAuthContext';
+import React, { useEffect, useState } from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
+import { useAuthContext } from '../hooks/useAuthContext';
 import './DashboardPage.css';
-import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement } from 'chart.js';
 
-ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement);
+ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
 const DashboardPage = () => {
-  const { smokes, dispatch } = useSmokesContext();
   const { user } = useAuthContext();
-  const [passedCount, setPassedCount] = useState(0);
-  const [failedCount, setFailedCount] = useState(0);
-  const [mvTypeCount, setMvTypeCount] = useState({});
+  const [statistics, setStatistics] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchSmokes = async () => {
-      if (!user) return;
+    const fetchStatistics = async () => {
       try {
-        const response = await fetch('https://backend-ieyu.onrender.com/api/smokes', {
-          headers: { 'Authorization': `Bearer ${user.token}` },
+        const response = await fetch('https://backend-ieyu.onrender.com/api/statistics', {
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
         });
-        const json = await response.json();
-        if (response.ok) {
-          dispatch({ type: 'SET_SMOKES', payload: json });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
+        const data = await response.json();
+        setStatistics(data);
+        setLoading(false);
       } catch (error) {
-        console.error('Failed to fetch smokes:', error);
+        console.error('Failed to fetch statistics:', error);
+        setError(error.message);
+        setLoading(false);
       }
     };
 
-    fetchSmokes();
-  }, [dispatch, user]);
-
-  useEffect(() => {
-    if (smokes) {
-      const passed = smokes.filter(smoke => smoke.smoke_result === 'Passed').length;
-      const failed = smokes.filter(smoke => smoke.smoke_result === 'Failed').length;
-      setPassedCount(passed);
-      setFailedCount(failed);
-
-      const mvTypeCount = smokes.reduce((acc, smoke) => {
-        acc[smoke.mvType] = (acc[smoke.mvType] || 0) + 1;
-        return acc;
-      }, {});
-      setMvTypeCount(mvTypeCount);
+    if (user) {
+      fetchStatistics();
     }
-  }, [smokes]);
+  }, [user]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!statistics) {
+    return <div>No data available</div>;
+  }
 
   const pieData = {
     labels: ['Passed', 'Failed'],
-    datasets: [{
-      data: [passedCount, failedCount],
-      backgroundColor: ['#36A2EB', '#FF6384'],
-    }],
+    datasets: [
+      {
+        label: '# of Tests',
+        data: [statistics.totalPassed || 0, statistics.totalFailed || 0],
+        backgroundColor: ['#4CAF50', '#F44336'],
+        borderColor: ['#4CAF50', '#F44336'],
+        borderWidth: 1,
+      },
+    ],
   };
 
   const barData = {
-    labels: Object.keys(mvTypeCount),
-    datasets: [{
-      label: 'MV Type Count',
-      data: Object.values(mvTypeCount),
-      backgroundColor: '#36A2EB',
-    }],
+    labels: statistics.mvTypeData?.map(data => data._id) || [],
+    datasets: [
+      {
+        label: 'MV Type Count',
+        data: statistics.mvTypeData?.map(data => data.count) || [],
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
+      },
+    ],
   };
 
   return (
     <div className="dashboard-page">
-      <div className="dashboard-summary">
-        <div className="summary-card">
-          <h2>Total Passed</h2>
-          <p>{passedCount}</p>
+      <h1>Dashboard</h1>
+      <div className="statistics-cards">
+        <div className="card">
+          <h2>Total No. Users</h2>
+          <p>{statistics.totalUsers}</p>
         </div>
-        <div className="summary-card">
+        <div className="card">
+          <h2>Total Passed</h2>
+          <p>{statistics.totalPassed}</p>
+        </div>
+        <div className="card">
           <h2>Total Failed</h2>
-          <p>{failedCount}</p>
+          <p>{statistics.totalFailed}</p>
         </div>
       </div>
-      <div className="charts-container">
-        <div className="chart">
+      <div className="chart-wrapper">
+        <div className="chart-container chart">
           <h3>Pass/Fail Distribution</h3>
           <Pie data={pieData} />
         </div>
-        <div className="chart">
+        <div className="chart-container chart">
           <h3>MV Type Count</h3>
           <Bar data={barData} />
         </div>
