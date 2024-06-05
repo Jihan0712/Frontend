@@ -59,6 +59,7 @@ header a {
   margin-left: 250px; /* Adjust this value to create space between the sidebar and content */
   padding: 20px;
   width: calc(100% - 250px);
+  box-sizing: border-box;
 }
 
 .content {
