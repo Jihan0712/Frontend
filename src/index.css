@@ -7,13 +7,20 @@
   --error: #e7195a;
 }
 
-body, html {
+html, body, #root {
   background: #2b2b2b; /* Adjusted to match the dashboard background */
   margin: 0;
-  padding: 0; /* Remove the margin to avoid unnecessary spacing */
+  padding: 0;
   font-family: "Poppins";
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header {
@@ -70,7 +77,7 @@ header a {
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .smoke-details h4 {
@@ -104,7 +111,7 @@ header a {
 }
 
 .smoke-details .update-button {
-  margin-left: -10px; /* Move the update button 10px to the left */  
+  margin-left: -10px; /* Move the update button 10px to the left */
   cursor: pointer;
   background: #f1f1f1;
   padding: 6px;
