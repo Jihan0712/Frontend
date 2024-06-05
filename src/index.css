@@ -71,16 +71,16 @@ header a {
 
 /* homepage */
 .home {
-  display: grid;
-  grid-template-columns: 3fr 3fr;
-  gap: 50px;
-  height: 100%; /* Take full height */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 .smoke-details {
   background: #fff;
   border-radius: 4px;
-  margin: 20px auto;
+  margin: 10px 0;
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);

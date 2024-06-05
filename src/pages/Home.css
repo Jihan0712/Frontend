@@ -6,13 +6,14 @@
   background-color: #1e1e1e;
   color: #ffffff;
   height: 100%;
-  overflow: auto;
+  overflow: hidden; /* Ensure no overflow */
 }
 
 .smokes {
   width: 100%;
   max-width: 800px;
   margin-bottom: 20px;
+  overflow: auto;
 }
 
 .pagination {
@@ -45,4 +46,3 @@
     padding: 0 10px;
   }
 }
-git 
