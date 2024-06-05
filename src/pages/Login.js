@@ -26,7 +26,7 @@ const Login = () => {
             <label>Email:</label>
             <input 
               type="email" 
-              placeholder="Email or phone number"
+              placeholder="Email"
               onChange={(e) => setEmail(e.target.value)} 
               value={email} 
             />

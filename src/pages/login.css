@@ -47,6 +47,26 @@ h1, h2, h3, p, a {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
+input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #000000;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+input[type="text"]::placeholder, input[type="email"]::placeholder {
+    color: #222222;
+    font-size: 16px;
+    font-weight: 500;
+}
+
 input[type="text"], input[type="password"] {
     width: 100%;
     padding: 12px 20px;
