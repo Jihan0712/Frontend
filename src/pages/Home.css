@@ -1,47 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-image: linear-gradient(to bottom, #1E1E1E, #666872);
+    margin: 0;
+    color: white;
+}
+
+h1, h2, h3, p, a {
+    font-family: 'Inter', sans-serif;
+}
+
 .home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background-color: #1e1e1e;
-  color: #ffffff;
-  height: 100%;
-  overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #1E1E1E;
+    color: #ffffff;
+    min-height: 100vh;
 }
 
 .smokes {
-  width: 100%;
-  max-width: 800px;
-  margin-bottom: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+.smoke-details {
+    background: #fff;
+    border-radius: 10px;
+    margin: 20px 0;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    color: black;
+}
+
+.smoke-details h4 {
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+    color: var(--primary);
+}
+
+.smoke-details p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.smoke-details .delete-button,
+.smoke-details .update-button,
+.smoke-details .print-button {
+    cursor: pointer;
+    background: #1aac83;
+    padding: 6px;
+    border-radius: 5px;
+    color: white;
+    margin-right: 10px;
+    border: none;
+    font-weight: bold;
+    text-align: center;
+    width: 70px;
+}
+
+.smoke-details .print-button {
+    background: #3180F7;
+}
+
+.smoke-details .delete-button:hover,
+.smoke-details .update-button:hover,
+.smoke-details .print-button:hover {
+    opacity: 0.8;
 }
 
 .pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .pagination button {
-  background-color: #2a2a2a;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  margin: 0 5px;
-  cursor: pointer;
-  border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .pagination button.active {
-  background-color: #17a2b8;
+    background-color: #17a2b8;
 }
 
 .pagination button:hover {
-  background-color: #0f6674;
+    background-color: #0f6674;
 }
 
 @media (max-width: 768px) {
-  .smokes {
+    .smokes {
+        width: 100%;
+        padding: 0 10px;
+    }
+}
+
+.add-smoke-form {
     width: 100%;
-    padding: 0 10px;
-  }
+    max-width: 800px;
+    background: #020405;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+}
+
+.add-smoke-form input[type="text"],
+.add-smoke-form input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #000000;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.add-smoke-form input[type="text"]::placeholder,
+.add-smoke-form input[type="password"]::placeholder {
+    color: #222222;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.add-smoke-form button {
+    background-color: #1aac83;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.add-smoke-form button:hover {
+    opacity: 0.8;
+}
+
+.add-smoke-form h3 {
+    color: white;
+    margin-bottom: 20px;
 }
